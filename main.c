@@ -49,9 +49,19 @@ float obvod_obdelniku(float a, float b) {
  *  @return None - nic nevracíme
  */
 void kresli_obdelnik (int a, int b) {
-  for (int i = a; i > 0; i--) {
+  int add = 0;
+
+  if (0 != (a % 2)) {
+    add = 1;
+  }
+    
+  for (int i = (a / 2) + add; i > 0; i--) {
     for (int j = b; j > 0; j--) {
-      printf("*");
+      if (i == 1 && add) {
+        printf("▀"); //"▄");
+      } else {
+        printf("█");
+      }
     }
     printf("\n");
   }
@@ -146,8 +156,8 @@ int main() {
     printf("Zadejte rozmer obdelniku [a b]: ");
     scanf("%f %f", &a, &b);
   #else
-    a = 7;
-    b = 4;
+    a = 20;
+    b = 40;
   #endif
     kresli_obdelnik(a, b);
     printf("\n");
